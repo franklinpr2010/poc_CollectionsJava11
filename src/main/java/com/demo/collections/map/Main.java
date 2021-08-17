@@ -55,8 +55,32 @@ public class Main {
 	   //antigo valor 11 e o novo 40
 	   System.out.println(hashMap.replace(4, 11, 40));
 	   
+	   //Replace/all 
 	   hashMap.replaceAll((k,v) -> v + 10);
 	   System.out.println(String.format( "replaceAll %s", hashMap) );
+	   
+	   hashMap.compute(1, (k,v) -> v + 100);
+	   
+	   System.out.println(String.format( "compute %s", hashMap));
+	   
+	   //Só computa se o index está presente
+	   hashMap.computeIfPresent(3, (k,v) -> v * 100);
+	   
+	   System.out.println(String.format( "computeIfPresent %s", hashMap));
+	   
+	   //verifica se contem a chave
+	   System.out.println(hashMap.containsKey(1));
+	   
+	   //Verifica se contem o valor
+	   System.out.println(hashMap.containsValue(14));
+	   
+	   //Se tiver vazia retorna true
+	   System.out.println(hashMap.isEmpty());
+	   
+	   
+	   
+	   
+	   
 	   
 	   
 	}
