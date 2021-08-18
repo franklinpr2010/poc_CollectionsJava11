@@ -1,5 +1,8 @@
 package com.demo.collections.optional;
 
+import java.util.ArrayList;
+import java.util.Arrays;
+import java.util.List;
 import java.util.Optional;
 
 public class Main {
@@ -39,7 +42,30 @@ public class Main {
 		//Optional Filter
 		System.out.println(integerValue.filter(i -> i ==2));
 		
+		System.out.println(integerValue.filter(i -> i ==2).orElse(100));
 		
+		integerValue.ifPresent(i -> System.out.println(i));
+		
+		Optional<Person> person = number(1);
+		
+		System.out.println(person.get());
+		
+		
+		Person person2 = person.filter(p -> p.getIdade() > 20)
+		.orElse(new Person("Sonia", 20));
+		
+		System.out.println(person2.getNome());
+		
+		
+	}
+	
+	@SuppressWarnings("static-access")
+	static Optional<Person> number(int position) {
+		Optional<Person> person = Optional.empty();
+		List<Person> personList = new ArrayList<>(Arrays.asList(new Person("Franklin", 31),new Person("Franklin", 32),new Person("Franklin", 33),new Person("Franklin", 34),new Person("Franklin", 35)));
+		if(position >= 0 && position < personList.size()) 
+			return person.of(personList.get(position));
+		return Optional.empty();
 	}
 
 }
