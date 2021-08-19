@@ -6,6 +6,8 @@ import java.util.Comparator;
 import java.util.List;
 import java.util.Optional;
 import java.util.function.BinaryOperator;
+import java.util.stream.DoubleStream;
+import java.util.stream.IntStream;
 import java.util.stream.Stream;
 
 import com.demo.collections.optional.Person;
@@ -80,6 +82,46 @@ public class Main {
 	    
 	    Stream<Integer> somandoMap = listas.stream().map(i -> i + 10);
 	    somandoMap.forEach(somandoPor10 -> System.out.println(somandoPor10));
+	    
+	    //retornando o maximo
+	    Optional<Integer> max = listas.stream().max(Integer::compareTo);
+	    System.out.println(max.get());
+	    
+	    //Gerando a soma, tem que passar para integer
+	    IntStream mapToInt = listas.stream().mapToInt(ih -> ih);
+	    System.out.println(mapToInt.sum());
+	    
+	    //Gerando a soma, tem que passar para integer
+	    DoubleStream mapToDouble = listas.stream().mapToDouble(ih -> ih + 0.0);
+	    System.out.println(mapToDouble.sum());
+	    
+	  //Map para object, multiplo código
+	    List<Integer> listas2 = new ArrayList<>(Arrays.asList(20,3,11,5,6,10));
+	    
+	    listas2.stream().map(lll -> {
+	    	System.out.println("Mapping " + lll);
+	    	return lll + 10;
+	    }).filter(lll -> {
+	    	System.out.println("Filtering " + lll);
+	    	return lll > 15;
+	    }).forEach(lll -> System.out.println(String.format("item nova lista %s.", lll)));
+	    
+	    
+	    
+	    //Flat map é quando quer fazer operações com duas listas
+	    int[] listas3 = new int[] {21,33,114,55,66,107};
+	    int[] listas4 = new int[] {201,32,112,52,62,120};
+	    
+	    Stream.of(listas3, listas4).flatMapToInt(IntStream::of)
+	    .max().ifPresent(System.out::println);
+	    
+	    
+	    
+	    
+	    
+	    
+	    
+	    
 	    
 	    
 	}

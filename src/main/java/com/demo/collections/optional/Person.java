@@ -3,6 +3,7 @@ package com.demo.collections.optional;
 public class Person {
 	private String nome;
 	private int idade;
+	private Double score;
 	
 	public Person(String nome, int idade) {
 		super();
